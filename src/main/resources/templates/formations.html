@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Liste des formations</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{styles.css}">
+  </head>
+  <body>
+    <h1>Liste des formations</h1>
+    <div class="button-container">
+      <button id="refresh-button" class="refresh-button">Rafraîchir la liste</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Id Formation</th>
+          <th>Titre</th>
+          <th>Id Place</th>
+          <th>Ville</th>
+          <th>Adresse</th>
+          <th>Code Postal</th>
+          <th>Région</th>
+        </tr>
+      </thead>
+      <tbody id="formations-table" th:fragment="formations-table">
+        <tr th:each="formation : ${formations}">
+          <td th:text="${formation.formationId}"></td>
+          <td th:text="${formation.title}"></td>
+          <td th:text="${formation.place.placeId}"></td>
+          <td th:text="${formation.place.city}"></td>
+          <td th:text="${formation.place.address}"></td>
+          <td th:text="${formation.place.zipCode}"></td>
+          <td th:text="${formation.place.region}"></td>
+        </tr>
+      </tbody>
+    </table>
+    <script src="scripts.js"></script>
+  </body>
+</html>
